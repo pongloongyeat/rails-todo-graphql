@@ -1,24 +1,81 @@
-# README
+# Todo GraphQL API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Todo backend with queries and mutations for fetching, creating, updating and deleting Todos.
 
-Things you may want to cover:
+## Setting up
 
-* Ruby version
+```bash
+# Set your ruby version to 3.0.1
+rbenv install 3.0.1
+rbenv global 3.0.1
 
-* System dependencies
+# Clone this repo
+git clone https://github.com/pongloongyeat/rails-todo-graphql.git && cd rails-todo-graphql
 
-* Configuration
+# Install gems and make migrations
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed
 
-* Database creation
+# Run server
+bundle exec rails server
+```
 
-* Database initialization
+Have fun with the APIs on [localhost:3000/graphiql](http://localhost:3000/graphiql).
 
-* How to run the test suite
+## Playing with the APIs
 
-* Services (job queues, cache servers, search engines, etc.)
+Copy and paste the following into GraphiQL:
 
-* Deployment instructions
+```
+query fetchTodos {
+  fetchTodos {
+    id
+    title
+    description
+    isDone
+    dueDate
+  }
+}
 
-* ...
+query fetchSpecificTodo {
+  fetchTodo(id: 8) {
+		id
+    title
+    description
+    isDone
+    dueDate
+  }
+}
+
+mutation createTodo {
+ 	createTodo(title: "GraphQL notes", description: "A long body of text about GraphQL", isDone: true) {
+   	id
+   	title
+   	description
+    isDone
+		dueDate
+	}
+}
+
+mutation updateTodo {
+  updateTodo(id: 8, title: "Updated title", isDone:false) {
+    id
+    title
+    description
+    isDone
+    dueDate
+  }
+}
+
+mutation deleteTodo {
+  deleteTodo(id: 8) {
+		id
+    title
+    description
+    isDone
+    dueDate
+  }
+}
+```
