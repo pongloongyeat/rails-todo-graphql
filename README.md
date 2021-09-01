@@ -41,7 +41,7 @@ query fetchTodos {
 
 query fetchSpecificTodo {
   fetchTodo(id: 8) {
-		id
+    id
     title
     description
     isDone
@@ -50,13 +50,13 @@ query fetchSpecificTodo {
 }
 
 mutation createTodo {
- 	createTodo(title: "GraphQL notes", description: "A long body of text about GraphQL", isDone: true) {
-   	id
-   	title
-   	description
+  createTodo(title: "GraphQL Todos", description: "A long body of text about GraphQL", isDone: true) {
+    id
+    title
+    description
     isDone
-		dueDate
-	}
+    dueDate
+  }
 }
 
 mutation updateTodo {
@@ -71,7 +71,7 @@ mutation updateTodo {
 
 mutation deleteTodo {
   deleteTodo(id: 8) {
-		id
+    id
     title
     description
     isDone
